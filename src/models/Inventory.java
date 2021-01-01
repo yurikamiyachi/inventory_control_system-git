@@ -19,12 +19,12 @@ import javax.persistence.Table;
             query="SELECT e FROM Inventory AS e ORDER BY e.id DESC"
             ),
     @NamedQuery(
-            name="getInventories",
+            name="getInventoriesCount",
             query="SELECT COUNT (e) FROM Inventory AS e"
             ),
     @NamedQuery(
             name="checkRegisteredTrade_code",
-            query="SELECT COUNT (e) FROM Inventory AS e WHERE e.trade_code"
+            query="SELECT COUNT(e) FROM Inventory AS e WHERE e.trade_code = :trade_code"
             )
 
 })
