@@ -10,8 +10,24 @@
     </div>
 </c:if>
 
-<label for="name">氏名</label><br />
-<input type="text" name="name" value="${inventory.name}" />
+<label for="trade_code">商品番号</label><br />
+<input type="text" name="trade_code" value="${inventory.trade_code}" />
+<br /><br />
+
+<label for="trade_name">商品名</label><br />
+<input type="text" name="trade_name" value="${inventory.trade_name}" />
+<br /><br />
+
+<label for="receiving">入庫数</label><br />
+<input type="text" name="receiving" value="${inventory.receiving}" />
+<br /><br />
+
+<label for="shiping">出庫数</label><br />
+<input type="text" name="shiping" value="${inventory.shiping}" />
+<br /><br />
+
+<label for="order_flag">発注者</label><br />
+<input type="text" name="order_flag" value="${inventory.order_flag}" />
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />

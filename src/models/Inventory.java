@@ -35,9 +35,6 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
-
     @Column(name = "trade_code", nullable = false, unique = true)
     private String trade_code;
 
@@ -70,19 +67,11 @@ public class Inventory {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getTrade_code() {
         return trade_code;
     }
 
-    public void setTrade_ode(String trade_code) {
+    public void setTrade_code(String trade_code) {
         this.trade_code = trade_code;
     }
 

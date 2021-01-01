@@ -17,8 +17,8 @@
                 </tr>
                 <c:forEach var="inventory" items="${inventories}" varStatus="status">
                     <tr class="row${status.count % 2}">
-                        <td><c:out value="${inventory.code}" /></td>
-                        <td><c:out value="${inventory.name}" /></td>
+                        <td><c:out value="${inventory.trade_code}" /></td>
+                        <td><c:out value="${inventory.trade_name}" /></td>
                         <td>
                             <c:choose>
                                 <c:when test="${inventory.delete_flag == 1}">
