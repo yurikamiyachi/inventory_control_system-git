@@ -10,11 +10,11 @@
     </div>
 </c:if>
 
-<label for="trade_code">商品番号</label><br />
+<label for="trade_code">品番</label><br />
 <input type="text" name="trade_code" value="${inventory.trade_code}" />
 <br /><br />
 
-<label for="trade_name">商品名</label><br />
+<label for="trade_name">品名</label><br />
 <input type="text" name="trade_name" value="${inventory.trade_name}" />
 <br /><br />
 
@@ -24,6 +24,10 @@
 
 <label for="shiping">出庫数</label><br />
 <input type="text" name="shiping" value="${inventory.shiping}" />
+<br /><br />
+
+<label for="stock">現在の在庫数</label><br />
+<input type="text" name="stock" value="${inventory.stock}" />
 <br /><br />
 
 <label for="order_flag">発注者</label><br />

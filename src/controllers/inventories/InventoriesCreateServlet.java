@@ -46,6 +46,8 @@ public class InventoriesCreateServlet extends HttpServlet {
             e.setOrder_flag(Integer.parseInt(request.getParameter("order_flag")));
             e.setReceiving(Integer.parseInt(request.getParameter("receiving")));
             e.setShiping(Integer.parseInt(request.getParameter("shiping")));
+            e.setStock(Integer.parseInt(request.getParameter("stock")));
+            e.setHistory(Integer.parseInt(request.getParameter("history")));
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             e.setCreated_at(currentTime);

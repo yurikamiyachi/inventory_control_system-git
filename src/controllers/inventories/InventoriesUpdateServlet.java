@@ -59,7 +59,7 @@ public class InventoriesUpdateServlet extends HttpServlet {
 
                 request.setAttribute("_token", request.getSession().getId());
                 request.setAttribute("inventory",e);
-                request.setAttribute("inventories", errors);
+                request.setAttribute("errors", errors);
 
                 RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/views/inventories/edit.jsp");
                 rd.forward(request, response);

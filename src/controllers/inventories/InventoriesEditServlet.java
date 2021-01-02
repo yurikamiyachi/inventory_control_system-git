@@ -16,7 +16,7 @@ import utils.DBUtil;
 /**
  * Servlet implementation class InventoriesEditServlet
  */
-@WebServlet(name = "inventories/edit", urlPatterns = { "/inventories/edit" })
+@WebServlet("/inventories/edit")
 public class InventoriesEditServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

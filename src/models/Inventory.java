@@ -50,6 +50,12 @@ public class Inventory {
     @Column(name = "shiping", nullable = false)
     private Integer shiping;
 
+    @Column(name = "stock", nullable = false)
+    private Integer stock;
+
+    @Column(name = "history", nullable = false)
+    private Integer history;
+
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
 
@@ -105,6 +111,22 @@ public class Inventory {
 
     public void setShiping(Integer shiping) {
         this.shiping = shiping;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public Integer getHistory() {
+        return history;
+    }
+
+    public void setHistory(Integer history) {
+        this.history = history;
     }
 
     public Timestamp getCreated_at() {

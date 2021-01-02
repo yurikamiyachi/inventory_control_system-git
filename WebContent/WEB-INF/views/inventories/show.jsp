@@ -5,16 +5,16 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${inventory != null}">
-                <h2>id : ${inventory.id} の商品情報　詳細ページ</h2>
+                <h2>id : ${inventory.id} の品番情報　詳細ページ</h2>
 
                 <table>
                     <tbody>
                         <tr>
-                            <th>商品番号</th>
+                            <th>品番</th>
                             <td><c:out value="${inventory.trade_code}" /></td>
                         </tr>
                         <tr>
-                            <th>商品名</th>
+                            <th>品名</th>
                             <td><c:out value="${invetory.trade_name}" /></td>
                         </tr>
                         <tr>

@@ -27,7 +27,7 @@ public class InventoryValidator {
 
     private static String validateTrade_code(String trade_code,Boolean trade_codeDuplicateCheckFlag){
         if(trade_code==null || trade_code.equals("")){
-            return "商品番号を入力してください。";
+            return "品番を入力してください。";
         }
 
         if(trade_codeDuplicateCheckFlag){
@@ -37,7 +37,7 @@ public class InventoryValidator {
                     .getSingleResult();
             em.close();
             if(inventories_count>0){
-                return "入力された商品情報はすでに存在しています。";
+                return "入力された品番情報はすでに存在しています。";
             }
         }
         return "";
@@ -45,7 +45,7 @@ public class InventoryValidator {
 
     private static String validateTrade_name(String trade_name){
         if(trade_name==null || trade_name.equals("")){
-            return "氏名を入力してください。";
+            return "品名を入力してください。";
         }
 
         return "";
