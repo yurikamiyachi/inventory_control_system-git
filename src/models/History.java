@@ -13,7 +13,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Table(name="histries")
+@Table(name="histories")
 @NamedQueries({
     @NamedQuery(
             name="getAllHistories",

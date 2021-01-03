@@ -92,13 +92,13 @@ button {
     color: #721c24;
     background-color: #f8d7da;
 }
-table#employee_list th {
+table#history_list th {
     width: 30%;
     padding: 10px 2%;
 
 }
 
-table#employee_list td {
+table#history_list td {
     width: 29%;
     padding: 10px 2%;
 }
@@ -112,4 +112,29 @@ tr.row0 {
 
 select {
     height: 30px;
+}
+
+table#history_list th {
+    font-weight: bold;
+    padding: 10px 2%;
+}
+
+table#history_list .trade_code {
+    width: 20%;
+    padding: 10px 2%;
+}
+table#history_list .trade_name {
+    width: 20%;
+}
+
+table#history_list .receiving {
+    width: 10%;
+}
+
+table#history_list .shiping {
+    width: 10%;
+}
+
+table#history_list .created_at {
+    width: 30%;
 }
