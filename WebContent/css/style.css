@@ -135,6 +135,10 @@ table#history_list .shiping {
     width: 10%;
 }
 
-table#history_list .created_at {
-    width: 30%;
+table#history_list .history_date {
+    width: 20%;
+}
+
+table#history_list .history_action {
+    width: 10%;
 }

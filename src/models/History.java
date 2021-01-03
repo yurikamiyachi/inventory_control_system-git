@@ -1,6 +1,6 @@
 package models;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,8 +43,8 @@ public class History {
     @Column(name="shiping",nullable=false)
     private Integer shiping;
 
-    @Column(name="created_at",nullable=false)
-    private Timestamp created_at;
+    @Column(name = "history_date", nullable = false)
+    private Date history_date;
 
     public Integer getId(){
         return id;
@@ -78,12 +78,12 @@ public class History {
         this.shiping=shiping;
     }
 
-    public Timestamp getCreated_at(){
-        return created_at;
+    public Date getHistory_date(){
+        return history_date;
     }
 
-    public void setCreated_at(Timestamp created_at){
-        this.created_at=created_at;
+    public void setHistory_date(Date history_date){
+        this.history_date=history_date;
     }
 
 }
