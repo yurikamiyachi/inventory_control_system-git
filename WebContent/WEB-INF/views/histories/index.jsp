@@ -21,7 +21,7 @@
                     </tr>
                     <c:forEach var="history" items="${histories}" varStatus="status">
                         <tr class="row${status.count % 2}">
-                            <td class="trade_code"><c:out value="${history.trade_code}" /></td>
+                            <td class="trade_code"><c:out value="${inventory.trade_code}" /></td>
                             <td class="trade_name"><c:out value="${history.trade_name}" /></td>
                             <td class="receiving"><c:out value="${history.receiving}" /></td>
                             <td class="shiping"><c:out value="${history.shiping}" /></td>
@@ -45,7 +45,7 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/histories/new' />">新規日報の登録</a></p>
+        <p><a href="<c:url value='/histories/new' />">新規品番の登録</a></p>
 
     </c:param>
 </c:import>

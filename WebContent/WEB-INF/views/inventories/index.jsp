@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
+    <%@ page import="models.Inventory" %>
+    <%Inventory e = (Inventory)session.getAttribute("e"); %>
         <c:if test="${flush != null}">
             <div id="flush_success">
                 <c:out value="${flush}"></c:out>
@@ -51,7 +53,7 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/inventories/new' />">新規品番の登録</a></p>
+        <p><a href="<c:url value='/inventories/new' />">入出庫数の登録</a></p>
 
     </c:param>
 </c:import>

@@ -54,6 +54,8 @@ public class InventoriesCreateServlet extends HttpServlet {
             e.setUpdated_at(currentTime);
             e.setDelete_flag(0);
 
+
+
             List<String> errors = InventoryValidator.validate(e, true);
             if(errors.size()>0){
                 em.close();

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% request.getSession().setAttribute("trade_code", "登録"); %>
+<% String username = (String)request.getSession().getAttribute("trade_code"); %>
 <c:if test="${errors != null}">
     <div id="flush_error">
         入力内容にエラーがあります。<br />
@@ -11,7 +13,7 @@
 </c:if>
 
 <label for="trade_code">品番</label><br />
-<input type="text" name="trade_code" value="${inventory.trade_code}" />
+<c:out value="${trade_code}" />
 <br /><br />
 
 <label for="trade_name">品名</label><br />
@@ -32,6 +34,10 @@
 
 <label for="order_flag">発注者</label><br />
 <input type="text" name="order_flag" value="${inventory.order_flag}" />
+<br /><br />
+
+<label for="history">履歴</label><br />
+<input type="text" name="history" value="${inventory.history}" />
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />

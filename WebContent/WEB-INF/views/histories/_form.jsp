@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 <c:if test="${errors != null}">
     <div id="flush_error">
         入力内容にエラーがあります。<br />
@@ -15,11 +17,11 @@
 <br /><br />
 
 <label for="trade_code">品番</label><br />
-<c:out value="${sessionScope.history.trade_code}" />
+<c:out value="${sessionScope.trade_code}" />
 <br /><br />
 
 <label for="trade_name">品名</label><br />
-<c:out value="${sessionScope.history.trade_name}" />
+<c:out value="${sessionScope.inventory.trade_name}" />
 <br /><br />
 
 <label for="receiving">入庫数</label><br />
