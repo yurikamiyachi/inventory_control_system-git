@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Employee;
 import models.History;
-import models.Inventory;
 import utils.DBUtil;
 
 /**
@@ -40,9 +40,10 @@ public class HistoriesCreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())){
             EntityManager em = DBUtil.createEntityManager();
 
-            History r = new History();
+            History h = new History();
 
-            r.setInventory((Inventory)request.getSession().getAttribute("trade_code"));
+            h.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
+
 
             Date history_date = new Date(System.currentTimeMillis());
             String rd_str = request.getParameter("history_date");
@@ -50,11 +51,13 @@ public class HistoriesCreateServlet extends HttpServlet {
                 history_date = Date.valueOf(request.getParameter("history_date"));
             }
 
-            r.setHistory_date(history_date);
 
+            h.setHistory_date(history_date);
 
-            r.setReceiving(Integer.parseInt(request.getParameter("receiving")));
-            r.setShiping(Integer.parseInt(request.getParameter("shiping")));
+            h.setTrade_name(request.getParameter("trade_name"));
+            h.setTrade_code(request.getParameter("trade_code"));
+            h.setReceiving(Integer.parseInt(request.getParameter("receiving")));
+            h.setShiping(Integer.parseInt(request.getParameter("shiping")));
 
             List<String> errors = new ArrayList<String>();
 
@@ -62,14 +65,14 @@ public class HistoriesCreateServlet extends HttpServlet {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("history", r);
+                request.setAttribute("history", h);
                 request.setAttribute("errors", errors);
 
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/histories/new.jsp");
                 rd.forward(request, response);
             } else {
                 em.getTransaction().begin();
-                em.persist(r);
+                em.persist(h);
                 em.getTransaction().commit();
                 em.close();
                 request.getSession().setAttribute("flush", "登録が完了しました。");

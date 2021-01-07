@@ -41,8 +41,8 @@ public class Inventory {
     @Column(name = "trade_name", nullable = false)
     private String trade_name;
 
-    @Column(name = "order_flag", nullable = false)
-    private Integer order_flag;
+    @Column(name = "ordering_person", nullable = false)
+    private String ordering_person;
 
     @Column(name = "receiving", nullable = false)
     private Integer receiving;
@@ -53,9 +53,6 @@ public class Inventory {
     @Column(name = "stock", nullable = false)
     private Integer stock;
 
-    @Column(name = "history", nullable = false)
-    private Integer history;
-
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
 
@@ -64,6 +61,7 @@ public class Inventory {
 
     @Column(name = "delete_flag", nullable = false)
     private Integer delete_flag;
+
 
     public Integer getId() {
         return id;
@@ -89,12 +87,12 @@ public class Inventory {
         this.trade_name = trade_name;
     }
 
-    public Integer getOrder_flag() {
-        return order_flag;
+    public String getOrdering_person() {
+        return ordering_person;
     }
 
-    public void setOrder_flag(Integer order_flag) {
-        this.order_flag = order_flag;
+    public void setOrdering_person(String ordering_person) {
+        this.ordering_person = ordering_person;
     }
 
     public Integer getReceiving() {
@@ -121,14 +119,6 @@ public class Inventory {
         this.stock = stock;
     }
 
-    public Integer getHistory() {
-        return history;
-    }
-
-    public void setHistory(Integer history) {
-        this.history = history;
-    }
-
     public Timestamp getCreated_at() {
         return created_at;
     }
@@ -152,4 +142,5 @@ public class Inventory {
     public void setDelete_flag(Integer delete_flag) {
         this.delete_flag = delete_flag;
     }
+
 }

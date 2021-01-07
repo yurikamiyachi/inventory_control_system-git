@@ -43,11 +43,10 @@ public class InventoriesCreateServlet extends HttpServlet {
 
             e.setTrade_code(request.getParameter("trade_code"));
             e.setTrade_name(request.getParameter("trade_name"));
-            e.setOrder_flag(Integer.parseInt(request.getParameter("order_flag")));
+            e.setOrdering_person(request.getParameter("ordering_person"));
             e.setReceiving(Integer.parseInt(request.getParameter("receiving")));
             e.setShiping(Integer.parseInt(request.getParameter("shiping")));
             e.setStock(Integer.parseInt(request.getParameter("stock")));
-            e.setHistory(Integer.parseInt(request.getParameter("history")));
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             e.setCreated_at(currentTime);
@@ -70,6 +69,7 @@ public class InventoriesCreateServlet extends HttpServlet {
                 em.getTransaction().begin();
                 em.persist(e);
                 em.getTransaction().commit();
+                request.getSession().setAttribute("trade", e);
                 request.getSession().setAttribute("flush","登録が完了しました。");
                 em.close();
 

@@ -34,8 +34,14 @@ public class History {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name="inventory_id",nullable=false)
-    private Inventory inventory;
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
+
+    @Column(name="trade_code",nullable=false)
+    private String trade_code;
+
+    @Column(name="trade_name",nullable=false)
+    private String trade_name;
 
     @Column(name="receiving",nullable=false)
     private Integer receiving;
@@ -54,12 +60,28 @@ public class History {
         this.id=id;
     }
 
-    public Inventory getInventory(){
-        return inventory;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setInventory(Inventory inventory){
-        this.inventory=inventory;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public String getTrade_code() {
+        return trade_code;
+    }
+
+    public void setTrade_code(String trade_code) {
+        this.trade_code = trade_code;
+    }
+
+    public String getTrade_name() {
+        return trade_name;
+    }
+
+    public void setTrade_name(String trade_name) {
+        this.trade_name = trade_name;
     }
 
     public Integer getReceiving(){

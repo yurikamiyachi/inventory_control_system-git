@@ -17,11 +17,11 @@
 <br /><br />
 
 <label for="trade_code">品番</label><br />
-<c:out value="${sessionScope.trade_code}" />
+<input type="text" name="trade_code" value="${history.trade_code}" />
 <br /><br />
 
 <label for="trade_name">品名</label><br />
-<c:out value="${sessionScope.inventory.trade_name}" />
+<input type="text" name="trade_name" value="${history.trade_name}" />
 <br /><br />
 
 <label for="receiving">入庫数</label><br />

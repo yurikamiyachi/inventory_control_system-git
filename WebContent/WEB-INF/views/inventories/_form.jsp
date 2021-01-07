@@ -13,7 +13,7 @@
 </c:if>
 
 <label for="trade_code">品番</label><br />
-<c:out value="${trade_code}" />
+<input type="text" name="trade_code" value="${inventory.trade_code}" />
 <br /><br />
 
 <label for="trade_name">品名</label><br />
@@ -32,12 +32,8 @@
 <input type="text" name="stock" value="${inventory.stock}" />
 <br /><br />
 
-<label for="order_flag">発注者</label><br />
-<input type="text" name="order_flag" value="${inventory.order_flag}" />
-<br /><br />
-
-<label for="history">履歴</label><br />
-<input type="text" name="history" value="${inventory.history}" />
+<label for="ordering_person">発注担当者</label><br />
+<input type="text" name="ordering_person" value="${inventory.ordering_person}" />
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />

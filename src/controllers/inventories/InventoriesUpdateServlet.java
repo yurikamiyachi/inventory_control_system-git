@@ -49,7 +49,7 @@ public class InventoriesUpdateServlet extends HttpServlet {
             }
 
             e.setTrade_name(request.getParameter("trade_name"));
-            e.setOrder_flag(Integer.parseInt(request.getParameter("order_flag")));
+            e.setOrdering_person(request.getParameter("ordering_person"));
             e.setUpdated_at(new Timestamp(System.currentTimeMillis()));
             e.setDelete_flag(0);
 

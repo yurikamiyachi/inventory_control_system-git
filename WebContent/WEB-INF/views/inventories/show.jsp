@@ -5,7 +5,7 @@
     <c:param name="content">
         <c:choose>
             <c:when test="${inventory != null}">
-                <h2>id : ${inventory.id} の品番情報　詳細ページ</h2>
+                <h2>${inventory.trade_name} の詳細ページ</h2>
 
                 <table>
                     <tbody>
@@ -15,16 +15,15 @@
                         </tr>
                         <tr>
                             <th>品名</th>
-                            <td><c:out value="${invetory.trade_name}" /></td>
+                            <td><c:out value="${inventory.trade_name}" /></td>
                         </tr>
                         <tr>
-                            <th>権限</th>
-                            <td>
-                                <c:choose>
-                                    <c:when test="${inventory.order_flag==1}">管理者</c:when>
-                                    <c:otherwise>一般</c:otherwise>
-                                </c:choose>
-                            </td>
+                            <th>発注担当者</th>
+                            <td><c:out value="${inventory.ordering_person}" /></td>
+                         </tr>
+                        <tr>
+                            <th>登録者</th>
+                            <td><c:out value="${sessionScope.login_employee.name}" /></td>
                          </tr>
                          <tr>
                             <th>登録日時</th>

@@ -7,6 +7,6 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>日報管理システムへようこそ</h2>
+        <h2>商品管理システムへようこそ</h2>
     </c:param>
 </c:import>

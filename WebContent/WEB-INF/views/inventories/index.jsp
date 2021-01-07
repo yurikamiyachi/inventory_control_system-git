@@ -2,29 +2,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:import url="../layout/app.jsp">
     <c:param name="content">
-    <%@ page import="models.Inventory" %>
-    <%Inventory e = (Inventory)session.getAttribute("e"); %>
         <c:if test="${flush != null}">
             <div id="flush_success">
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>在庫　一覧</h2>
+        <h2>商品在庫　一覧</h2>
         <table id="inventory_list">
             <tbody>
                 <tr>
                     <th>品番</th>
                     <th>品名</th>
                     <th>現在の在庫数</th>
-                    <th>入出荷履歴</th>
-                    <th>更新</th>
+                    <th>編集✍</th>
                 </tr>
                 <c:forEach var="inventory" items="${inventories}" varStatus="status">
                     <tr class="row${status.count % 2}">
                         <td><c:out value="${inventory.trade_code}" /></td>
                         <td><c:out value="${inventory.trade_name}" /></td>
                         <td><c:out value="${inventory.stock}" /></td>
-                        <td><c:out value="${inventory.history}" /></td>
                         <td>
                             <c:choose>
                                 <c:when test="${inventory.delete_flag == 1}">
@@ -53,7 +49,8 @@
                 </c:choose>
             </c:forEach>
         </div>
-        <p><a href="<c:url value='/inventories/new' />">入出庫数の登録</a></p>
+        <p><a href="<c:url value='/inventories/new' />">新規商品の登録</a></p>
+        <p><a href="<c:url value='/histories/index' />">入出庫管理</a></p>
 
     </c:param>
 </c:import>
