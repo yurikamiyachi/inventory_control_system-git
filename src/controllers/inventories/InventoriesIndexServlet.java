@@ -35,23 +35,26 @@ public class InventoriesIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        int page = 1;
+        int page;
         try{
             page = Integer.parseInt(request.getParameter("page"));
-        } catch(NumberFormatException e) { }
+        } catch(Exception e) {page = 1;
+        }
+
         List<Inventory> inventories = em.createNamedQuery("getAllInventories", Inventory.class)
-                                     .setFirstResult(15 * (page - 1))
-                                     .setMaxResults(15)
-                                     .getResultList();
+                .setFirstResult(15 * (page - 1))
+                .setMaxResults(15)
+                .getResultList();
 
         long inventories_count = (long)em.createNamedQuery("getInventoriesCount", Long.class)
-                                       .getSingleResult();
+                .getSingleResult();
 
         em.close();
 
         request.setAttribute("inventories", inventories);
         request.setAttribute("inventories_count", inventories_count);
         request.setAttribute("page", page);
+
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
             request.getSession().removeAttribute("flush");
@@ -60,6 +63,4 @@ public class InventoriesIndexServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/inventories/index.jsp");
         rd.forward(request, response);
     }
-    }
-
-
+}

@@ -34,14 +34,13 @@ public class InventoriesShowServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
-        Inventory e = em.find(Inventory.class, Integer.parseInt(request.getParameter("id")));
+        Inventory i = em.find(Inventory.class, Integer.parseInt(request.getParameter("id")));
 
         em.close();
 
-        request.setAttribute("inventory",e);
+        request.setAttribute("inventory",i);
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/inventories/show.jsp");
         rd.forward(request,response);
     }
-
 }

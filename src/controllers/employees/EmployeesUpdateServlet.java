@@ -50,6 +50,7 @@ public class EmployeesUpdateServlet extends HttpServlet {
 
             Boolean passwordCheckFlag=true;
             String password=request.getParameter("password");
+
             if(password == null || password.equals("")){
                 passwordCheckFlag = false;
             }else{
@@ -87,5 +88,4 @@ public class EmployeesUpdateServlet extends HttpServlet {
             }
         }
     }
-
 }

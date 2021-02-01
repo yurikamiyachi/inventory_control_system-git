@@ -17,13 +17,24 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
             name="getAllHistories",
-            query="SELECT r FROM History AS r ORDER BY r.id DESC"
+            query="SELECT h FROM History AS h ORDER BY h.id DESC"
             ),
     @NamedQuery(
             name="getHistoriesCount",
-            query="SELECT COUNT(r) FROM History AS r"
+            query="SELECT COUNT(h) FROM History AS h"
             ),
-
+    @NamedQuery(
+            name="getHistories",
+            query="SELECT h FROM History AS h WHERE h.inventory = :inventory ORDER BY h.id DESC"
+            ),
+    @NamedQuery(
+            name="getMyHistories",
+            query="SELECT h FROM History h WHERE h.inventory=:inventory AND h.history_date BETWEEN :startdate AND :enddate"
+            ),
+    @NamedQuery(
+            name="getMyHistories2",
+            query="SELECT h FROM History h WHERE h.history_date BETWEEN :startdate AND :enddate"
+            )
 })
 
 @Entity
@@ -34,14 +45,12 @@ public class History {
     private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "inventory_id", nullable = false)
+    private Inventory inventory;
+
+    @ManyToOne
     @JoinColumn(name = "employee_id", nullable = false)
     private Employee employee;
-
-    @Column(name="trade_code",nullable=false)
-    private String trade_code;
-
-    @Column(name="trade_name",nullable=false)
-    private String trade_name;
 
     @Column(name="receiving",nullable=false)
     private Integer receiving;
@@ -60,28 +69,20 @@ public class History {
         this.id=id;
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
     public Employee getEmployee() {
         return employee;
     }
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
-    }
-
-    public String getTrade_code() {
-        return trade_code;
-    }
-
-    public void setTrade_code(String trade_code) {
-        this.trade_code = trade_code;
-    }
-
-    public String getTrade_name() {
-        return trade_name;
-    }
-
-    public void setTrade_name(String trade_name) {
-        this.trade_name = trade_name;
     }
 
     public Integer getReceiving(){

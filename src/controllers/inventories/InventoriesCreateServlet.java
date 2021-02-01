@@ -39,37 +39,35 @@ public class InventoriesCreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())){
             EntityManager em = DBUtil.createEntityManager();
 
-            Inventory e = new Inventory();
+            Inventory i = new Inventory();
 
-            e.setTrade_code(request.getParameter("trade_code"));
-            e.setTrade_name(request.getParameter("trade_name"));
-            e.setOrdering_person(request.getParameter("ordering_person"));
-            e.setReceiving(Integer.parseInt(request.getParameter("receiving")));
-            e.setShiping(Integer.parseInt(request.getParameter("shiping")));
-            e.setStock(Integer.parseInt(request.getParameter("stock")));
+            i.setTrade_code(request.getParameter("trade_code"));
+            i.setTrade_name(request.getParameter("trade_name"));
+            i.setOrdering_person(request.getParameter("ordering_person"));
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            e.setCreated_at(currentTime);
-            e.setUpdated_at(currentTime);
-            e.setDelete_flag(0);
+            i.setCreated_at(currentTime);
+            i.setUpdated_at(currentTime);
+            i.setReceiving(0);
+            i.setShiping(0);
+            i.setStock(0);
+            i.setDelete_flag(0);
 
 
-
-            List<String> errors = InventoryValidator.validate(e, true);
+            List<String> errors = InventoryValidator.validate(i, true);
             if(errors.size()>0){
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("inventory", e);
+                request.setAttribute("inventory", i);
                 request.setAttribute("errors", errors);
 
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/inventories/new.jsp");
                 rd.forward(request,response);
             }else{
                 em.getTransaction().begin();
-                em.persist(e);
+                em.persist(i);
                 em.getTransaction().commit();
-                request.getSession().setAttribute("trade", e);
                 request.getSession().setAttribute("flush","登録が完了しました。");
                 em.close();
 
@@ -77,5 +75,4 @@ public class InventoriesCreateServlet extends HttpServlet {
             }
         }
     }
-
 }

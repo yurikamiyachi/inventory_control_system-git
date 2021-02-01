@@ -3,6 +3,7 @@ package controllers.histories;
 import java.io.IOException;
 import java.sql.Date;
 
+import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.History;
+import models.Inventory;
+import utils.DBUtil;
 
 /**
  * Servlet implementation class HistoriesNewServlet
@@ -33,12 +36,20 @@ public class HistoriesNewServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("_token",request.getSession().getId());
 
-        History r = new History();
-        r.setHistory_date(new Date(System.currentTimeMillis()));
-        request.setAttribute("history", r);
+        EntityManager em = DBUtil.createEntityManager();
+
+        Inventory i = em.find(Inventory.class,Integer.parseInt(request.getParameter("id")));
+        em.close();
+
+        request.setAttribute("inventory", i);
+        request.setAttribute("_token", request.getSession().getId());
+        request.getSession().setAttribute("inventory_id",i.getId());
+
+        History h = new History();
+        h.setHistory_date(new Date(System.currentTimeMillis()));
+        request.setAttribute("history", h);
 
         RequestDispatcher rd =request.getRequestDispatcher("/WEB-INF/views/histories/new.jsp");
         rd.forward(request, response);
     }
-
 }

@@ -16,11 +16,11 @@ import javax.persistence.Table;
 @NamedQueries({
     @NamedQuery(
             name="getAllInventories",
-            query="SELECT e FROM Inventory AS e ORDER BY e.id DESC"
+            query="SELECT i FROM Inventory AS i ORDER BY i.id DESC"
             ),
     @NamedQuery(
             name="getInventoriesCount",
-            query="SELECT COUNT (e) FROM Inventory AS e"
+            query="SELECT COUNT (i) FROM Inventory AS i"
             ),
     @NamedQuery(
             name="checkRegisteredTrade_code",
@@ -41,9 +41,6 @@ public class Inventory {
     @Column(name = "trade_name", nullable = false)
     private String trade_name;
 
-    @Column(name = "ordering_person", nullable = false)
-    private String ordering_person;
-
     @Column(name = "receiving", nullable = false)
     private Integer receiving;
 
@@ -52,6 +49,9 @@ public class Inventory {
 
     @Column(name = "stock", nullable = false)
     private Integer stock;
+
+    @Column(name = "ordering_person", nullable = false)
+    private String ordering_person;
 
     @Column(name = "created_at", nullable = false)
     private Timestamp created_at;
@@ -95,30 +95,6 @@ public class Inventory {
         this.ordering_person = ordering_person;
     }
 
-    public Integer getReceiving() {
-        return receiving;
-    }
-
-    public void setReceiving(Integer receiving) {
-        this.receiving = receiving;
-    }
-
-    public Integer getShiping() {
-        return shiping;
-    }
-
-    public void setShiping(Integer shiping) {
-        this.shiping = shiping;
-    }
-
-    public Integer getStock() {
-        return stock;
-    }
-
-    public void setStock(Integer stock) {
-        this.stock = stock;
-    }
-
     public Timestamp getCreated_at() {
         return created_at;
     }
@@ -141,6 +117,31 @@ public class Inventory {
 
     public void setDelete_flag(Integer delete_flag) {
         this.delete_flag = delete_flag;
+    }
+
+    public Integer getReceiving() {
+        return receiving;
+    }
+
+    public void setReceiving(int receiving) {
+        this.receiving = receiving;
+
+    }
+
+    public Integer getShiping() {
+        return shiping;
+    }
+
+    public void setShiping(int shiping) {
+        this.shiping = shiping;
+
+    }
+    public Integer getStock(){
+        return stock;
+    }
+
+    public void setStock(Integer stock){
+        this.stock=stock;
     }
 
 }

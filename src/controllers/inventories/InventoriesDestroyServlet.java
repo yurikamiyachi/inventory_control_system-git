@@ -36,9 +36,9 @@ public class InventoriesDestroyServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())){
             EntityManager em = DBUtil.createEntityManager();
 
-            Inventory e =em.find(Inventory.class, (Integer)(request.getSession().getAttribute("inventory_id")));
-            e.setDelete_flag(1);
-            e.setUpdated_at(new Timestamp(System.currentTimeMillis()));
+            Inventory i =em.find(Inventory.class, (Integer)(request.getSession().getAttribute("inventory_id")));
+            i.setDelete_flag(1);
+            i.setUpdated_at(new Timestamp(System.currentTimeMillis()));
 
             em.getTransaction().begin();
             em.getTransaction().commit();
@@ -46,6 +46,6 @@ public class InventoriesDestroyServlet extends HttpServlet {
             request.getSession().setAttribute("flush", "削除が完了しました。");
 
             response.sendRedirect(request.getContextPath()+"/inventories/index");
-    }
+        }
     }
 }

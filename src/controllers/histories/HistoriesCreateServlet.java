@@ -2,7 +2,6 @@ package controllers.histories;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Employee;
 import models.History;
+import models.Inventory;
+import models.validators.HistoryValidator;
 import utils.DBUtil;
 
 /**
@@ -40,27 +41,23 @@ public class HistoriesCreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())){
             EntityManager em = DBUtil.createEntityManager();
 
+            Inventory i = em.find(Inventory.class,(Integer)(request.getSession().getAttribute("inventory_id")));
+
             History h = new History();
-
             h.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
-
 
             Date history_date = new Date(System.currentTimeMillis());
             String rd_str = request.getParameter("history_date");
-            if(rd_str != null && !rd_str.equals("")){
+            if(rd_str != null && !rd_str.equals("")) {
                 history_date = Date.valueOf(request.getParameter("history_date"));
             }
 
-
+            h.setInventory(i);
             h.setHistory_date(history_date);
-
-            h.setTrade_name(request.getParameter("trade_name"));
-            h.setTrade_code(request.getParameter("trade_code"));
             h.setReceiving(Integer.parseInt(request.getParameter("receiving")));
             h.setShiping(Integer.parseInt(request.getParameter("shiping")));
 
-            List<String> errors = new ArrayList<String>();
-
+            List<String> errors = HistoryValidator.validate(h,true);
             if(errors.size() > 0) {
                 em.close();
 
@@ -79,8 +76,6 @@ public class HistoriesCreateServlet extends HttpServlet {
 
                 response.sendRedirect(request.getContextPath() + "/histories/index");
             }
-
         }
     }
-
 }

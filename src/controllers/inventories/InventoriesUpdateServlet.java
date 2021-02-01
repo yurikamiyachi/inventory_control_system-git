@@ -39,26 +39,26 @@ public class InventoriesUpdateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())){
             EntityManager em = DBUtil.createEntityManager();
 
-            Inventory e = em.find(Inventory.class, (Integer)(request.getSession().getAttribute("inventory_id")));
+            Inventory i = em.find(Inventory.class, (Integer)(request.getSession().getAttribute("inventory_id")));
 
             Boolean trade_codeDupricateCheckFlag=true;
-            if(e.getTrade_code().equals(request.getParameter("trade_code"))){
+            if(i.getTrade_code().equals(request.getParameter("trade_code"))){
                 trade_codeDupricateCheckFlag=false;
             }else{
-                e.setTrade_code(request.getParameter("trade_code"));
+                i.setTrade_code(request.getParameter("trade_code"));
             }
 
-            e.setTrade_name(request.getParameter("trade_name"));
-            e.setOrdering_person(request.getParameter("ordering_person"));
-            e.setUpdated_at(new Timestamp(System.currentTimeMillis()));
-            e.setDelete_flag(0);
+            i.setTrade_name(request.getParameter("trade_name"));
+            i.setOrdering_person(request.getParameter("ordering_person"));
+            i.setUpdated_at(new Timestamp(System.currentTimeMillis()));
+            i.setDelete_flag(0);
 
-            List<String> errors=InventoryValidator.validate(e, trade_codeDupricateCheckFlag);
+            List<String> errors=InventoryValidator.validate(i, trade_codeDupricateCheckFlag);
             if(errors.size()>0){
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("inventory",e);
+                request.setAttribute("inventory",i);
                 request.setAttribute("errors", errors);
 
                 RequestDispatcher rd=request.getRequestDispatcher("/WEB-INF/views/inventories/edit.jsp");
@@ -74,5 +74,4 @@ public class InventoriesUpdateServlet extends HttpServlet {
             }
         }
     }
-
 }

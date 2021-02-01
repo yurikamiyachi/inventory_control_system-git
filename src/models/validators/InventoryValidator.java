@@ -47,7 +47,6 @@ public class InventoryValidator {
         if(trade_name==null || trade_name.equals("")){
             return "品名を入力してください。";
         }
-
         return "";
     }
 

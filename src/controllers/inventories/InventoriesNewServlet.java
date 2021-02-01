@@ -36,5 +36,4 @@ public class InventoriesNewServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/inventories/new.jsp");
         rd.forward(request, response);
     }
-
 }

@@ -39,6 +39,7 @@ public class EmployeesIndexServlet extends HttpServlet {
         try{
             page=Integer.parseInt(request.getParameter("page"));
         }catch(NumberFormatException e){ }
+
         List<Employee> employees = em.createNamedQuery("getAllEmployees",Employee.class)
                 .setFirstResult(15*(page-1))
                 .setMaxResults(15)
@@ -46,6 +47,7 @@ public class EmployeesIndexServlet extends HttpServlet {
 
         long employees_count=(long)em.createNamedQuery("getEmployeesCount",Long.class)
                 .getSingleResult();
+
         em.close();
 
         request.setAttribute("employees",employees);
@@ -59,5 +61,4 @@ public class EmployeesIndexServlet extends HttpServlet {
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/index.jsp");
         rd.forward(request, response);
     }
-
 }
