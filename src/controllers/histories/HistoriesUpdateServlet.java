@@ -41,25 +41,36 @@ public class HistoriesUpdateServlet extends HttpServlet {
 
             History h = em.find(History.class, (Integer)(request.getSession().getAttribute("history_id")));
 
-            Boolean receivingDuplicateCheckFlag  = true;
-            if(h.getReceiving().equals(request.getParameter("receiving"))){
-                receivingDuplicateCheckFlag = false;
-            }else{
+            String receiving =request.getParameter("receiving");
+            h.setReceiving(null);
+
+            if(receiving != null && !receiving.equals("")) {
+                receiving = request.getParameter("receiving");
                 h.setReceiving(Integer.parseInt(request.getParameter("receiving")));
+            }else{
+                receiving=null;
+            }
+
+            String shiping =request.getParameter("shiping");
+            h.setShiping(null);
+
+            if(shiping != null && !shiping.equals("")) {
+                shiping = request.getParameter("shiping");
+                h.setShiping(Integer.parseInt(request.getParameter("shiping")));
+            }else{
+                shiping=null;
             }
 
             Inventory i = em.find(Inventory.class,(Integer)(request.getSession().getAttribute("inventory_id")));
 
             h.setInventory(i);
-            h.setReceiving(Integer.parseInt(request.getParameter("receiving")));
-            h.setShiping(Integer.parseInt(request.getParameter("shiping")));
-
-            List<String> errors = HistoryValidator.validate(h, receivingDuplicateCheckFlag);
+            List<String> errors = HistoryValidator.validate(h);
             if(errors.size()>0){
                 em.close();
 
                 request.setAttribute("_token",request.getSession().getId());
                 request.setAttribute("history", h);
+                request.setAttribute("inventory", i);
                 request.setAttribute("errors", errors);
 
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/histories/edit.jsp");

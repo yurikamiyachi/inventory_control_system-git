@@ -52,16 +52,30 @@ public class HistoriesCreateServlet extends HttpServlet {
                 history_date = Date.valueOf(request.getParameter("history_date"));
             }
 
+            String receiving = request.getParameter("receiving");
+            if(receiving != null && !receiving.equals("")) {
+                h.setReceiving(Integer.parseInt(request.getParameter("receiving")));
+            }else{
+                receiving=null;
+            }
+
+            String shiping = request.getParameter("shiping");
+            if(shiping != null && !shiping.equals("")) {
+                shiping = request.getParameter("shiping");
+                h.setShiping(Integer.parseInt(shiping));
+            }else{
+                shiping=null;
+            }
+
             h.setInventory(i);
             h.setHistory_date(history_date);
-            h.setReceiving(Integer.parseInt(request.getParameter("receiving")));
-            h.setShiping(Integer.parseInt(request.getParameter("shiping")));
 
-            List<String> errors = HistoryValidator.validate(h,true);
+            List<String> errors = HistoryValidator.validate(h);
             if(errors.size() > 0) {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
+                request.setAttribute("inventory", i);
                 request.setAttribute("history", h);
                 request.setAttribute("errors", errors);
 

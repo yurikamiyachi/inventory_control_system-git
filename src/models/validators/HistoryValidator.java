@@ -6,7 +6,7 @@ import java.util.List;
 import models.History;
 
 public class HistoryValidator {
-    public static List<String> validate(History h,Boolean receivingDuplicateCheckFlag){
+    public static List<String> validate(History h){
         List<String> errors = new ArrayList<String>();
 
         String receiving_error=validateReceiving(h.getReceiving());
@@ -23,14 +23,14 @@ public class HistoryValidator {
 
 
     private static String validateReceiving(Integer receiving) {
-        if(receiving==null || receiving.equals("")){
+        if(receiving==null|| receiving.equals("")){
             return "入庫数を入力してください。";
         }
         return "";
     }
 
     private static String validateShiping(Integer shiping) {
-        if(shiping==null || shiping.equals("")){
+        if(shiping==null|| shiping.equals("")){
             return "出庫数を入力してください。";
         }
         return "";

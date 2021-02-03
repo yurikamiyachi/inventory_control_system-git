@@ -9,15 +9,15 @@ import models.Inventory;
 import utils.DBUtil;
 
 public class InventoryValidator {
-    public static List<String> validate(Inventory e,Boolean trade_codeDuplicateCheckFlag){
+    public static List<String> validate(Inventory i,Boolean trade_codeDuplicateCheckFlag){
         List<String> errors = new ArrayList<String>();
 
-        String trade_code_error=validateTrade_code(e.getTrade_code(),trade_codeDuplicateCheckFlag);
+        String trade_code_error=validateTrade_code(i.getTrade_code(),trade_codeDuplicateCheckFlag);
         if(!trade_code_error.equals("")){
             errors.add(trade_code_error);
         }
 
-        String trade_name_error=validateTrade_name(e.getTrade_name());
+        String trade_name_error=validateTrade_name(i.getTrade_name());
         if(!trade_name_error.equals("")){
             errors.add(trade_name_error);
         }
