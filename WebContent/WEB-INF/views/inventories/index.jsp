@@ -55,6 +55,9 @@
             <a href="<c:url value='/inventories/new' />">《新規商品の登録》</a>
         </p>
         <p>
+            <a href="<c:url value='/histories/index' />">《入出庫履歴一覧》</a>
+        </p>
+        <p>
             <a href="<c:url value='/stocks/index' />">《在庫管理一覧》</a>
         </p>
 

@@ -46,7 +46,7 @@
                     <a href="<c:url value='/histories/new?id=${inventory.id}' />">《この商品の入出庫を登録する》</a>
                 </p>
                 <p>
-                    <a href="<c:url value='/histories/index' />"></a>
+                    <a href="<c:url value='/histories/index' />">《入出庫履歴一覧》</a>
                 </p>
             </c:when>
             <c:otherwise>

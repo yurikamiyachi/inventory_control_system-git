@@ -44,7 +44,7 @@ $(function(){
                     href="<c:url value='/stocks/index' />">《在庫管理》</a></li>
                 <c:if test="${sessionScope.login_employee != null}">
                     <c:if test="${sessionScope.login_employee.admin_flag == 1}">
-                        <li class=header_menu"><a
+                        <li class="header_menu"><a
                             href="<c:url value='/employees/index' />">《従業員管理》</a></li>
                         </c:if>
                 </c:if>

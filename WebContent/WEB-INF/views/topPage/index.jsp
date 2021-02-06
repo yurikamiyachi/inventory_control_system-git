@@ -4,7 +4,6 @@
 <c:import url="/WEB-INF/views/layout/app.jsp">
     <c:param name="content">
         <h2>商品 一覧</h2>
-
         <form method="POST" action="<c:url value='/inventories/index' />">
         </form>
     </c:param>

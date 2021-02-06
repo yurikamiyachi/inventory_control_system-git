@@ -22,13 +22,13 @@
 
 <label for="trade_code">品番</label>
 <br />
-<c:out value="${inventory.trade_code}" />
+<c:out value="${history.inventory.trade_code}" />
 <br />
 <br />
 
 <label for="trade_name">品名</label>
 <br />
-<c:out value="${inventory.trade_name}" />
+<c:out value="${history.inventory.trade_name}" />
 <br />
 <br />
 
