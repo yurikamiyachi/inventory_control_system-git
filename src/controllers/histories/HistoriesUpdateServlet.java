@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.History;
-import models.Inventory;
 import models.validators.HistoryValidator;
 import utils.DBUtil;
 
@@ -61,16 +60,12 @@ public class HistoriesUpdateServlet extends HttpServlet {
                 shiping=null;
             }
 
-            Inventory i = em.find(Inventory.class,(Integer)(request.getSession().getAttribute("inventory_id")));
-
-            h.setInventory(i);
             List<String> errors = HistoryValidator.validate(h);
             if(errors.size()>0){
                 em.close();
 
                 request.setAttribute("_token",request.getSession().getId());
                 request.setAttribute("history", h);
-                request.setAttribute("inventory", i);
                 request.setAttribute("errors", errors);
 
                 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/histories/edit.jsp");

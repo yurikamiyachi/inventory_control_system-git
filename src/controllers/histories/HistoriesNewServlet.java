@@ -41,8 +41,6 @@ public class HistoriesNewServlet extends HttpServlet {
         Inventory i = em.find(Inventory.class,Integer.parseInt(request.getParameter("id")));
         em.close();
 
-        request.setAttribute("_token", request.getSession().getId());
-
         History h = new History();
         h.setInventory(i);
         h.setHistory_date(new Date(System.currentTimeMillis()));

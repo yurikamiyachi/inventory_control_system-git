@@ -14,7 +14,6 @@
                 <h2>お探しのデータは見つかりませんでした。</h2>
             </c:otherwise>
         </c:choose>
-
         <p>
             <a href="<c:url value='/histories/index' />">《入出庫履歴一覧に戻る》</a>
         </p>

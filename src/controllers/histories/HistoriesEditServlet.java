@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.History;
-import models.Inventory;
 import utils.DBUtil;
 
 /**
@@ -36,14 +35,11 @@ public class HistoriesEditServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
 
         History h = em.find(History.class,Integer.parseInt(request.getParameter("id")));
-        Inventory i = em.find(Inventory.class,(Integer)(request.getSession().getAttribute("inventory_id")));
         em.close();
 
         request.setAttribute("history", h);
-        request.setAttribute("inventory", i);
         request.setAttribute("_token", request.getSession().getId());
         request.getSession().setAttribute("history_id",h.getId());
-        request.getSession().setAttribute("inventory_id",i.getId());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/histories/edit.jsp");
         rd.forward(request, response);
