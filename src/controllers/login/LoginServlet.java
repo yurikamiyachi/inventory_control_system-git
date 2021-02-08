@@ -60,8 +60,7 @@ public class LoginServlet extends HttpServlet {
 
             String password = EncryptUtil.getPasswordEncrypt(
                     plain_pass,
-                    (String)this.getServletContext().getAttribute("pepper")
-                    );
+                    (String)this.getServletContext().getAttribute("pepper"));
 
             try{
                 e = em.createNamedQuery("checkLoginCodeAndPassword",Employee.class)

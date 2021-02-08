@@ -41,10 +41,11 @@ public class HistoriesCreateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())){
             EntityManager em = DBUtil.createEntityManager();
 
-            Inventory i = em.find(Inventory.class,(Integer)(request.getSession().getAttribute("inventory_id")));
+            Inventory i = em.find(Inventory.class,Integer.parseInt(request.getParameter("id")));
 
             History h = new History();
             h.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
+
 
             Date history_date = new Date(System.currentTimeMillis());
             String rd_str = request.getParameter("history_date");
@@ -75,7 +76,6 @@ public class HistoriesCreateServlet extends HttpServlet {
                 em.close();
 
                 request.setAttribute("_token", request.getSession().getId());
-                request.setAttribute("inventory", i);
                 request.setAttribute("history", h);
                 request.setAttribute("errors", errors);
 
