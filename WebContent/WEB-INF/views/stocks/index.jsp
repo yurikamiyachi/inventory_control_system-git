@@ -9,12 +9,6 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script>
-            $(function() {
-                $('td:contains("-")').css('color', '#FF0000');
-            });
-        </script>
 
         <h2>【商品在庫 一覧】</h2>
         <table id="stock_list">
@@ -50,7 +44,7 @@
                         <c:out value="${i}" />&nbsp;
                     </c:when>
                     <c:otherwise>
-                        <a href="<c:url value='/?page=${i}' />"><c:out value="${i}" /></a>&nbsp;
+                        <a href="<c:url value='/stocks/index?page=${i}' />"><c:out value="${i}" /></a>&nbsp;
                     </c:otherwise>
                 </c:choose>
             </c:forEach>

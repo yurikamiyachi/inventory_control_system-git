@@ -11,7 +11,7 @@
         </c:if>
 
         <h2>【月別在庫数】</h2>
-        <canvas id="myChart" height="450" width="600"></canvas>
+        <canvas id="myChart" height="450" width="1200"></canvas>
         <script
             src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"
             type="text/javascript"></script>
@@ -29,7 +29,6 @@
          },
 
       ]
-
    }
 
    window.onload = function(){

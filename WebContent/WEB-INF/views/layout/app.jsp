@@ -42,11 +42,13 @@ $(function(){
                     href="<c:url value='/inventories/index' />">《商品管理》</a></li>
                 <li class="header_menu"><a
                     href="<c:url value='/stocks/index' />">《在庫管理》</a></li>
+                <li class="header_menu"><a
+                    href="<c:url value='/aggregate/new' />">《月別小計》</a></li>
                 <c:if test="${sessionScope.login_employee != null}">
                     <c:if test="${sessionScope.login_employee.admin_flag == 1}">
                         <li class="header_menu"><a
                             href="<c:url value='/employees/index' />">《従業員管理》</a></li>
-                        </c:if>
+                    </c:if>
                 </c:if>
             </ul>
         </div>

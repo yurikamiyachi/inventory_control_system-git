@@ -46,7 +46,6 @@ public class HistoriesCreateServlet extends HttpServlet {
             History h = new History();
             h.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
 
-
             Date history_date = new Date(System.currentTimeMillis());
             String rd_str = request.getParameter("history_date");
             if(rd_str != null && !rd_str.equals("")) {

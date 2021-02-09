@@ -9,7 +9,7 @@
                 <c:out value="${flush}"></c:out>
             </div>
         </c:if>
-        <h2>【在庫数推移】</h2>
+        <h2>【出庫数推移】</h2>
         <script
             src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
         <canvas id="myChart"></canvas>
@@ -46,8 +46,10 @@
            }
        }
    });
+
 </script>
         <br />
+
         <form method="GET" action="<c:url value='/histories/graph2' />">
             <label for="history_date">【期間指定】</label><br /> <input type="month"
                 name="history_month"
@@ -65,6 +67,6 @@
             <p>
                 <a href="<c:url value='/inventories/index' />">《商品管理一覧に戻る》</a>
             </p>
-            </div>
+            </form>
     </c:param>
 </c:import>
