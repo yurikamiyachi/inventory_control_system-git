@@ -36,9 +36,10 @@
       window.myBar = new Chart(ctx).Bar(barChartData);
       responsive : true
    }
+
 </script>
 
-        <h4>${format2}の入出庫履歴一覧</h4>
+        <h4>${format2}の在庫数一覧</h4>
         <table id="stock_list">
             <tbody>
                 <tr>
