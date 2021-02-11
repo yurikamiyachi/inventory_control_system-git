@@ -37,6 +37,7 @@
       responsive : true
    }
 </script>
+
         <h4>${format2}の入出庫履歴一覧</h4>
         <table id="stock_list">
             <tbody>
@@ -59,10 +60,26 @@
                 </c:forEach>
             </tbody>
         </table>
-
-        <p>
-            <a href="<c:url value='/histories/index' />">《入出庫履歴一覧に戻る》</a>
-        </p>
-
+        <div id="pagination">
+            （全 ${inventories_count} 件）<br />
+            <c:forEach var="i" begin="1"
+                end="${((inventories_count - 1) / 15) + 1}" step="1">
+                <c:choose>
+                    <c:when test="${i == page}">
+                        <c:out value="${i}" />&nbsp;
+                    </c:when>
+                    <c:otherwise>
+                        <a href="<c:url value='/aggregate/index?page=${i}' />"><c:out
+                                value="${i}" /></a>&nbsp;
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+            <p>
+                <a href="<c:url value='/inventories/index' />">《商品管理一覧に戻る》</a>
+            </p>
+            <p>
+                <a href="<c:url value='/histories/index' />">《入出庫履歴一覧に戻る》</a>
+            </p>
+        </div>
     </c:param>
 </c:import>

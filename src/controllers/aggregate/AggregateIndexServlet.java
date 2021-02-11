@@ -46,6 +46,11 @@ public class AggregateIndexServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         EntityManager em = DBUtil.createEntityManager();
 
+        int page = 1;
+        try{
+            page = Integer.parseInt(request.getParameter("page"));
+        } catch(NumberFormatException e) { }
+
         Calendar c = Calendar.getInstance();
         String tr = request.getParameter("history_month");
         String add = tr+"/01";
@@ -139,6 +144,7 @@ public class AggregateIndexServlet extends HttpServlet {
         request.setAttribute("stock", stock);
         HttpSession session = request.getSession();
         session.setAttribute("format2", format2);
+        request.setAttribute("page", page);
 
         if(request.getSession().getAttribute("flush") != null) {
             request.setAttribute("flush", request.getSession().getAttribute("flush"));
